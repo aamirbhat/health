@@ -12,6 +12,7 @@
 {% endblock %}
 {% block content %}
 <body class="body">
+<div style="width:980px;">
 	<header class="mainheader1">
 		
 			
@@ -21,8 +22,8 @@
          	<div class="get"><div class="get1"><h2>Search Diseases Here ...</h2></div>
          	<div class="form">
 <form action="/home/search" method="GET" class="main">	
-{{form.as_p}}
-<input type="submit" id="sbutton2" class="btn btn-large btn-primary"  value="submit">
+{{form}}
+<input type="submit"  class="btn btn-large btn-primary"  value="submit" style="margin:0px;">
 </form>
 </div>
 </nav>  
@@ -31,7 +32,7 @@
 	
 		 <footer>  
 		 </footer> 
-		        
+	</div>	        
 	</body>
 
 

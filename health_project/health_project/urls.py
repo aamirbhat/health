@@ -8,7 +8,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', lambda x: HttpResponseRedirect('/home/index')),
+    url(r'^$', 'diseaseinfo.views.search_disease', name='index'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'home/',include('diseaseinfo.urls')),
     url(r'^grappelli/', include('grappelli.urls')),

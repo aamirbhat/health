@@ -5,13 +5,15 @@ from diseaseinfo.models import DiseaseInfo,Diseases
 import datetime
 import json
 from django.http import HttpResponse
-
+from django.views.decorators.cache import cache_page
+from django.views.decorators.http import condition
 
 def search_disease(request):
     '''return the search form  to the index page'''
     form = SearchForm()
     context = {'form':form}
     return render_to_response('search.html', context, context_instance = RequestContext(request))
+
 
 def search_ajax(request):
     '''autocomplete function 
@@ -42,12 +44,18 @@ def disease(request):
     filtering is done cities and agelimits are the filters'''
     form = SearchForm()
     
-    age_dict={'infant':[0,5],'children':[6,18],'adult':[19,40],'senior-adult':[41,60],'old':[60,100]}
-    city = {'srinagar':'srinagar','anantnag':'anantnag','baramulla':'baramulla'}
+    age_dict={'Infant':[0,5],'Children':[6,18],'Adult':[19,40],'Senior-adult':[41,60],'Old':[60,100]}
+    city = {'Srinagar':'srinagar','Anantnag':'anantnag','Baramulla':'baramulla'}
     if request.method == "GET":
+            
             disease_name = request.GET['search_text'or None]
             cities=request.GET.getlist('citylist'or None)
             agelimits = request.GET.getlist('agelist'or None)
+            context = {}
+            context = {'search_text': str(disease_name)}
+            print context
+            form = SearchForm(initial=context)
+            print form
             if disease_name:
                 value=disease_name.split(',')
                 if len(value)== 1:
@@ -89,6 +97,7 @@ def disease(request):
                     else:
                         disease_javascript={}
                         disease_java=json.dumps(disease_javascript)
+                        
                     return render_to_response('disease_statistic.html', {'disease':disease,'bit':bit,'age_dict':age_dict,'city':city,'disease_name':disease_name,'cities':cities,'agelimits':agelimits,'results':disease_java,'form':form},context_instance = RequestContext(request))
                         
                 else:

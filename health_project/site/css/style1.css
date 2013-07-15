@@ -1,3 +1,11 @@
+.hello
+{
+height:50px;
+width:auto:
+background-color:red;
+
+}
+
 body 
 	{
 	background-color: #ffffff;
@@ -44,7 +52,7 @@ box-shadow: 0 0 6px 0.2em black;
 	}
 #id_search_text
 	{
-  width: 47%;
+  width: 70%;
 height: 48%;
 margin-left: 0%;
 margin-top: 0px;
@@ -84,9 +92,10 @@ margin-bottom: 1.5%;
 	background-color: white;
 	width: 43%;
 	float: left;
-	height: auto;
+	height: 89%;
 	padding: 9px;
 	margin: 1%;
+	overflow:scroll;
 	}
  .locate-img
  	{
@@ -184,6 +193,7 @@ margin-bottom:6px;
 .bar
 {
 background-color:#ffffff;
+padding-left:15px;
 }
 .detail{
 height: 115px;
@@ -264,7 +274,7 @@ position:fixed;
 #footer-inner {
 width: 960px;
 height: 160px;
-margin: -10 auto;
+margin: -69 auto;
 border-bottom: 4px solid #554D47;
 }
 #copyright {
@@ -273,7 +283,7 @@ padding-top: 140px;
 }
 #social {
 float: right;
-padding-top: 118px;
+padding-top: 91px;
 }
 #social ul li {
 float: left;
